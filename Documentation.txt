@@ -1,0 +1,79 @@
+/add requires JSON in the following format:
+
+{
+	username : 'NAME',
+	restaurant : 'RESTAURANT',
+	description : 'DESCRIBE THE MEAL',
+	whatmeal : 0     //integer between 0-3 (0 = snack, 1 = breakfast, 2 = lunch, 3 = dinner)
+	cost : 2.99     //cost of the meal
+	date : YYYY-MM-DD   //date of the meal
+}
+
+/userdata REQUIRES
+
+
+
+a username and a timespan. the query looks like:
+/userdata?time=7&username=Greg
+
+/userdata RETURNS the following information in a JSON:
+
+			avgCost : [avgCostO, avgCostB, avgCostL, avgCostD],
+			sumTotal : [sumO, sumB, sumL, sumD],
+			arrayMeals : [O, B, L, D],
+			dateArrays : [dateArrayO,dateArrayB,dateArrayL,dateArrayD],
+			userRestaurants : visitedRestaurants,
+			userRestcount : restCount
+
+where:
+
+avgCost:	An array of average meal cost. That is, avgCost[0] = avgCostO = the average cost of snacks over the time frame entered. avgCost[2] = avgCostL = the average cost of lunch for the user over the time frame given.
+
+sumTotal:	An array of total meal costs for the user. That is, sumTotal[0] = sumO = the sum of all snacks entered within the time frame. sumTotal[2] = sumL = the sum of all lunches for the user over the entered time frame.
+
+arrayMeals:	An array of arrays. This array returns the cost of every meal eaten within the time frame given. The index of this array corresponds to the meal types (i.e. arrayMeals[0] = an array of the costs of snacks eaten in the time frame. arrayMeals[2] = an array of lunches eaten in the time frame).
+
+dateArrays:	An array of arrays. This array returns the date that every meal was eaten in the time frame given. The index of this array corresponds to the meal types (i.e. dateArrays[0] = an array of dates the snacks were eaten by a user in a time frame). The index of the array of dates within this one corresponds to the cost of the meal in arrayMeals. That is the meal arrayMeals[0][0] was eaten on dateArrays[0][0], meal arrayMeals[0][1] was eaten on dateArrays[0][1], meal arrayMeals[3][7] was eaten on dateArrays[3][7]. 
+
+userRestaurants: Returns an array of restaurants the user visited, in order from most visited to least visited.
+
+userRestcount: Returns an array of the amount of times each restaurant was visited, in order from most to least. The indexes of this array correspond to the indexes of the userRestaurants array. That is, restaurant userRestaurants[0] was visited userRestcount[0] times. 
+
+
+/alluserdata REQUIRES
+
+a timespan
+
+a query will look like:
+/alluserdata?time=7
+
+/alluserdata RETURNS the following information in a JSON:
+
+			avgCost : [avgCostO, avgCostB, avgCostL, avgCostD],
+			sumTotal : [sumO, sumB, sumL, sumD],
+			arrayMeals : [O, B, L, D],
+			dateArrays : [dateArrayO,dateArrayB,dateArrayL,dateArrayD],
+			dailyAvgCost : [dailyAvgO, dailyAvgB, dailyAvgL, dailyAvgD],
+			dailyAvgDates : datesInTimeSpanO,
+			allRestaurants : visitedRestaurants,
+			allRestcount : restCount
+
+avgCost:	An array of average meal cost. That is, avgCost[0] = avgCostO = the average cost of snacks over the time frame entered. avgCost[2] = avgCostL = the average cost of lunch for the all users over the time frame given.
+
+sumTotal:	An array of total meal costs for all users. That is, sumTotal[0] = sumO = the sum of all snacks entered within the time frame. sumTotal[2] = sumL = the sum of all lunches for all users over the entered time frame.
+
+arrayMeals:	An array of arrays. This array returns the cost of every meal eaten within the time frame given. The index of this array corresponds to the meal types (i.e. arrayMeals[0] = an array of the costs of snacks eaten in the time frame. arrayMeals[2] = an array of lunches eaten in the time frame). THIS IS NOT THE RIGHT DATA TO GRAPH FOR ALL USERS
+
+dateArrays:	An array of arrays. This array returns the date that every meal was eaten in the time frame given. The index of this array corresponds to the meal types (i.e. dateArrays[0] = an array of dates the snacks were eaten by a user in a time frame). The index of the array of dates within this one corresponds to the cost of the meal in arrayMeals. That is the meal arrayMeals[0][0] was eaten on dateArrays[0][0], meal arrayMeals[0][1] was eaten on dateArrays[0][1], meal arrayMeals[3][7] was eaten on dateArrays[3][7]. THIS IS NOT THE RIGHT DATA TO GRAPH FOR ALL USERS
+
+dailyAvgCost: An array of arrays. This array returns the average daily cost of every meal that was eaten by every user in the timeframe given. The index of this array corresponds to the meal types (i.e. dailyAvgCost[0] = average daily cost of snacks for all users. dailyAvgCost[2] = average daily cost of lunches for all users). This is the right data to use for the graph for all users.
+
+dailyAvgCost: An array of arrays. This array returns the date that every meal was eaten in the time frame given. The index of this array corresponds to the meal types (i.e. dateArrays[0] = an array of dates the snacks were eaten by a user in a time frame). The index of the array of dates within this one corresponds to the cost of the meal in arrayMeals. That is the meal arrayMeals[0][0] was eaten on dateArrays[0][0], meal arrayMeals[0][1] was eaten on dateArrays[0][1], meal arrayMeals[3][7] was eaten on dateArrays[3][7].This is the right data to use for the graph for all users.
+
+allRestaurants: Returns an array of restaurants all users visited, in order from most visited to least visited.
+
+allRestcount: Returns an array of the amount of times each restaurant was visited, in order from most to least. The indexes of this array correspond to the indexes of the allRestaurants array. That is, restaurant allRestaurants[0] was visited allRestcount[0] times,  restaurant allRestaurants[1] was visited allRestcount[1] times, etc. 
+
+
+
+

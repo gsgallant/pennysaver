@@ -1,0 +1,155 @@
+<html>
+
+<head>
+    <title>project #2</title>
+    <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+    <link rel="stylesheet" href="animate.css">
+    <link type="text/css" rel="stylesheet" href="css/style.css">
+    <!-- amCharts javascript sources -->
+    <script type="text/javascript" src="http://www.amcharts.com/lib/3/amcharts.js"></script>
+    <script type="text/javascript" src="http://www.amcharts.com/lib/3/serial.js"></script>
+    <script type="text/javascript" src="http://cdn.amcharts.com/lib/3/pie.js"></script>
+    <script type="text/javascript" src="http://www.amcharts.com/lib/3/themes/dark.js"></script>
+    
+</head>
+
+<body>
+    <div id="body" class="intro z-depth-2">
+        <div id="title">
+            A Penny $aved
+        </div>
+        <nav id="userbar">
+            <div class="nav-wrapper">
+                <form>
+                    <div class="input-field">
+                        <input id="search" class="userinput" type="search" required>
+                        <label for="search"></label>
+                    </div>
+                </form>
+            </div>
+        </nav>
+        <!-- first set of buttons -->
+        <a id="login" class="waves-effect waves-light btn"><i class="material-icons left">input</i>LOGIN</a>
+        <a id="register" class="waves-effect waves-light btn"><i class="material-icons right">supervisor_account</i>REGISTER</a>
+        <!-- second set of buttons -->
+        <a id="add" class="waves-effect waves-light btn"><i class="material-icons left">input</i>ADD</a>
+        <ul id="dropdown2" class="dropdown-content">
+            <li><a href="#!">7 DAYS</a></li>
+            <li><a href="#!">14 DAYS</a></li>
+            <li><a href="#!">30 DAYS</a></li>
+            <li><a href="#!">60 DAYS</a></li>
+        </ul>
+        <a class="btn dropdown-button" href="#!" data-activates="dropdown2">TIMESPAN<i class="mdi-navigation-arrow-drop-down right"></i></a>
+        <a id="logout" class="waves-effect waves-light btn"><i class="material-icons left">input</i>LogOut</a>
+    </div>
+    <div class="row" id="avgcost">
+        <div class="col s6 m3 l3">
+            <span>SNACK: </span><span>$</span><span id="snackavgcost"></span>
+        </div>
+        <div class="col s6 m3 l3">
+            <span>BREAKFAST: </span><span>$</span><span id="breakfastavgcost"></span>
+        </div>
+        <div class="col  s6 m3 l3">
+            <span>LUNCH: </span><span>$</span><span id="lunchavgcost"></span>
+        </div>
+        <div class="col s6 m3 l3">
+            <span>DINNER: </span><span>$</span><span id="dinneravgcost"></span>
+        </div>
+    </div>
+    <!-- ===============================GRAPHS DIV==================== -->
+    <!-- LARGE BAR CHART -->
+    <div class="row">
+        <div class="col s12 m12 l12">
+            <div id="chartdiv9" style="width: 100%; height: 400px; background-color: #FFFFFF;"></div>
+        </div>
+    </div>
+    <!-- USER FREQUENT RESTAURANTS -->
+    <div class="row">
+        <div class="col s12 m6 l6">
+            <!-- most visited-->
+            <div id="chartdiv3" style="width: 100%; height: 400px; background-color: #FFFFFF;"></div>
+        </div>
+        <!-- EVERYONE FREQUENT RESTAURANTS -->
+        <!-- most visited -->
+        <div class="col s12 m6 l6">
+            <div id="chartdiv6" style="width: 100%; height: 400px; background-color: #FFFFFF;"></div>
+        </div>
+    </div>
+    <!-- LINE GRAPH -->
+    <div class="row">
+        <div class="col s12 m12 l12">
+            <div id="chartdiv12" style="width: 100%; height: 400px; background-color: #FFFFFF;"></div>
+        </div>
+    </div>
+    <!--==================== Modal Structure =============================-->
+    <div id="modal1" class="modal bottom-sheet">
+        <div class="modal-content">
+            <h4 id="modal-header">Add Meal</h4>
+            <div class="row">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="cost" type="text" class="validate">
+                            <label for="first_name">Cost</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="restaurant" type="text" class="validate">
+                            <label for="first_name">Restaurant</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="description" type="text" class="validate">
+                            <label for="first_name">Description</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="date" type="text" class="validate">
+                            <label for="first_name">Date</label>
+                        </div>
+                    </div>
+                    <form action="#">
+                        <div class="col s6 m3 l3">
+                            <p>
+                                <input name="group1" value=0 type="radio" id="test1" />
+                                <label for="test1">Snack</label>
+                            </p>
+                        </div>
+                        <div class="col s6 m3 l3">
+                            <p>
+                                <input name="group1" value=1 type="radio" id="test2" />
+                                <label for="test2">Breakfast</label>
+                            </p>
+                        </div>
+                        <div class="col s6 m3 l3">
+                            <p>
+                                <input name="group1" value=2 type="radio" id="test3" />
+                                <label for="test3">Lunch</label>
+                            </p>
+                        </div>
+                        <div class="col s6 m3 l3">
+                            <p>
+                                <input name="group1" value=3 type="radio" id="test4" />
+                                <label for="test4">Dinner</label>
+                            </p>
+                        </div>
+                    </form>
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="myButton" id="addinfo">Add Meal</a>
+        </div>
+    </div>
+    <!-- jQuery is required by Materialize to function -->
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+    <script type="text/javascript" src="/js/custom.js"></script>
+
+</body>
+
+</html>
