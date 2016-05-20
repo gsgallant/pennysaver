@@ -192,3 +192,8 @@ label {
 #avgcost{
     padding-left: 90px;
 }
+
+#costheader{
+    font-size: 20px;
+    text-align: center;
+}

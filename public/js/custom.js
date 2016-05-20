@@ -13,6 +13,9 @@ $(document).ready(function() {
         $("#chartdiv6").hide();
         $("#chartdiv9").hide();
         $("#chartdiv12").hide();
+        $("#avgcost").hide();
+        $("#costheader").hide();
+
 
         $("#login").click(function() {
             userName = $('.userinput').val();
@@ -27,6 +30,8 @@ $(document).ready(function() {
                     $("#add").show();
                     $("#logout").show();
                     $(".dropdown-button").show();
+                    $("#avgcost").show();
+                    $("#costheader").show();
 
 
                     $("#chartdiv3").show();
@@ -177,6 +182,12 @@ function clearForm(){
 
 
 function RefreshPage(time,userName,data){
+
+                $("#snackavgcost").html(data.oneUserData.avgCost[0]);
+                 $("#breakfastavgcost").html(data.oneUserData.avgCost[1]);
+                  $("#lunchavgcost").html(data.oneUserData.avgCost[2]);
+                   $("#dinneravgcost").html(data.oneUserData.avgCost[3]);
+
                 
                 var userRestaurantChartArray = [];
                 
@@ -244,7 +255,7 @@ function RefreshPage(time,userName,data){
                     "titles": [{
                         "id": "Title-1",
                         "size": 15,
-                        "text": "Total Meal Cost Over 30 Days"
+                        "text": "Total Meal Cost Over "+requestedTimeFrame+" Days"
                     }],
                     "dataProvider": [{
                         "category": "Snack",
@@ -341,7 +352,7 @@ function RefreshPage(time,userName,data){
                     "titles": [{
                         "id": "Title-1",
                         "size": 15,
-                        "text": "Meal Costs Over X Days"
+                        "text": "Meal Costs Over "+requestedTimeFrame+" Days"
                     }],
                     "dataProvider": [{
                         "date": "2014-03-01",
