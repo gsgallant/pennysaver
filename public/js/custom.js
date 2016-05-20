@@ -113,10 +113,15 @@ $(document).ready(function() {
             $("#register").show();
         });
 
-            $("#dropdown2").click(function() {
+            $(document).on('click', '#dropdown2 li', function() {
            
-             var value = $(this).val();
-             console.log(value);
+             // var value = $(this).val();
+             requestedTimeFrame = $(this).children().data('value');
+             console.log(requestedTimeFrame);
+             userDataRetrieve(requestedTimeFrame,userName)
+             
+
+             // console.log(value);
 
 
         
@@ -164,7 +169,6 @@ function clearForm(){
  function userDataRetrieve(requestedTimeFrame,userName){   
             $.post(currentURL + "/userdata?time=" + requestedTimeFrame + "&userName=" + userName
             ).done(function(data) {
-                console.log("133");
                 RefreshPage(requestedTimeFrame,userName,data);
                 
             }); //end of post   
