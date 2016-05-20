@@ -16,6 +16,9 @@ $(document).ready(function() {
         $("#avgcost").hide();
         $("#costheader").hide();
 
+    
+
+        
 
         $("#login").click(function() {
             userName = $('.userinput').val();
@@ -114,6 +117,8 @@ $(document).ready(function() {
             $("#chartdiv6").hide();
             $("#chartdiv9").hide();
             $("#chartdiv12").hide();
+            $("#avgcost").hide();
+            $("#costheader").hide();
             $("#login").show();
             $("#register").show();
         });
@@ -183,10 +188,10 @@ function clearForm(){
 
 function RefreshPage(time,userName,data){
 
-                $("#snackavgcost").html(data.oneUserData.avgCost[0]);
-                 $("#breakfastavgcost").html(data.oneUserData.avgCost[1]);
-                  $("#lunchavgcost").html(data.oneUserData.avgCost[2]);
-                   $("#dinneravgcost").html(data.oneUserData.avgCost[3]);
+                $("#snackavgcost").html(data.oneUserData.avgCost[0].toFixed(2));
+                 $("#breakfastavgcost").html(data.oneUserData.avgCost[1].toFixed(2));
+                  $("#lunchavgcost").html(data.oneUserData.avgCost[2].toFixed(2));
+                   $("#dinneravgcost").html(data.oneUserData.avgCost[3].toFixed(2));
 
                 
                 var userRestaurantChartArray = [];
