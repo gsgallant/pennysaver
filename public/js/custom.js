@@ -155,7 +155,7 @@ $(document).ready(function() {
                 
                 userDataRetrieve(requestedTimeFrame,newInfo.username);
 
-                return;
+                return false;
             });
 
         }); //end of click
@@ -175,7 +175,7 @@ function clearForm(){
             $.post(currentURL + "/userdata?time=" + requestedTimeFrame + "&userName=" + userName
             ).done(function(data) {
                 refreshPage(requestedTimeFrame,userName,data);
-                
+                return false;
             }); //end of post   
         
         };
@@ -484,5 +484,5 @@ function refreshPage(time,userName,data){
                     }],
                     "dataProvider": chartBuild
                 }); //end line graph
-           
+       return false;    
 }//end of refreshPage Function
