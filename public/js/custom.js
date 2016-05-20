@@ -73,6 +73,7 @@ $(document).ready(function() {
                     $("#add").show();
                     $("#view").show();
                     $("#logout").show();
+                    $(".dropdown-button").show();
                     
                     Materialize.toast('Thanks for Joining!', 3000)
                     
@@ -188,10 +189,10 @@ function clearForm(){
 
 function RefreshPage(time,userName,data){
 
-                $("#snackavgcost").html(data.oneUserData.avgCost[0].toFixed(2));
-                 $("#breakfastavgcost").html(data.oneUserData.avgCost[1].toFixed(2));
-                  $("#lunchavgcost").html(data.oneUserData.avgCost[2].toFixed(2));
-                   $("#dinneravgcost").html(data.oneUserData.avgCost[3].toFixed(2));
+                $("#snackavgcost").html(data.oneUserData.avgCost[0]);
+                 $("#breakfastavgcost").html(data.oneUserData.avgCost[1]);
+                  $("#lunchavgcost").html(data.oneUserData.avgCost[2]);
+                   $("#dinneravgcost").html(data.oneUserData.avgCost[3]);
 
                 
                 var userRestaurantChartArray = [];
@@ -308,10 +309,119 @@ function RefreshPage(time,userName,data){
                     "dataProvider": userRestaurantChartArray
                 });
                 // LINE GRAPH
+
+                var oneAllCostB = [];
+                //alert(data.oneUserData.dateArrays[1].length)
+                var toggle = false;
+                for(i=0;i<data.allUserData.dailyAvgDates.length;i++){
+                    toggle = false;
+                    for(j=0;j<data.oneUserData.dateArrays[1].length;j++){
+                        var test = moment(data.oneUserData.dateArrays[1][j]).clone().add(2,'hours');
+                        var compDate = data.allUserData.dailyAvgDates[i];
+                        //test.add(200325,'milliseconds');
+                        if(Math.abs(test.diff(compDate)) < 77760000){
+                            oneAllCostB.push(data.oneUserData.arrayMeals[1][j]);
+                            toggle = true;
+                            console.log(toggle);
+                        }    
+                        //console.log(Math.abs(test.diff(compDate)));
+                    }
+                    if(toggle == false){
+                        oneAllCostB.push(0);
+                    }
+                    
+                }
+                console.log(oneAllCostB);
+               //alert(moment(data.allUserData.dailyAvgDates[4]) + " " + moment(data.oneUserData.dateArrays[1][0]) + " " + moment(data.allUserData.dailyAvgDates[4]).isSame(moment(data.oneUserData.dateArrays[1][0])))
+              // console.log(moment(data.allUserData.dailyAvgDates[4]).format("MM/DD/YY") + " " + moment(data.oneUserData.dateArrays[1][0]).format("MM/DD/YY") + " " + moment(data.allUserData.dailyAvgDates[4]).isSame(moment(data.oneUserData.dateArrays[1][0])))
+                var oneAllCostL = [];
+                //alert(data.oneUserData.dateArrays[1].length)
+                var toggle = false;
+                for(i=0;i<data.allUserData.dailyAvgDates.length;i++){
+                    toggle = false;
+                    for(j=0;j<data.oneUserData.dateArrays[2].length;j++){
+                        var test = moment(data.oneUserData.dateArrays[2][j]).clone().add(2,'hours');
+                        var compDate = data.allUserData.dailyAvgDates[i];
+                        //test.add(200325,'milliseconds');
+                        if(Math.abs(test.diff(compDate)) < 77760000){
+                            oneAllCostL.push(data.oneUserData.arrayMeals[2][j]);
+                            toggle = true;
+                            console.log(toggle);
+                        }    
+                        //console.log(Math.abs(test.diff(compDate)));
+                    }
+                    if(toggle == false){
+                        oneAllCostL.push(0);
+                    }
+                    
+                }
+                console.log(oneAllCostL);
+
+                var oneAllCostD = [];
+                //alert(data.oneUserData.dateArrays[1].length)
+                var toggle = false;
+                for(i=0;i<data.allUserData.dailyAvgDates.length;i++){
+                    toggle = false;
+                    for(j=0;j<data.oneUserData.dateArrays[3].length;j++){
+                        var test = moment(data.oneUserData.dateArrays[3][j]).clone().add(2,'hours');
+                        var compDate = data.allUserData.dailyAvgDates[i];
+                        //test.add(200325,'milliseconds');
+                        if(Math.abs(test.diff(compDate)) < 77760000){
+                            oneAllCostD.push(data.oneUserData.arrayMeals[3][j]);
+                            toggle = true;
+                            console.log(toggle);
+                        }    
+                        //console.log(Math.abs(test.diff(compDate)));
+                    }
+                    if(toggle == false){
+                        oneAllCostD.push(0);
+                    }
+                    
+                }
+                console.log(oneAllCostD);
+
+
+                var oneAllCostO = [];
+                //alert(data.oneUserData.dateArrays[1].length)
+                var toggle = false;
+                for(i=0;i<data.allUserData.dailyAvgDates.length;i++){
+                    toggle = false;
+                    for(j=0;j<data.oneUserData.dateArrays[0].length;j++){
+                        var test = moment(data.oneUserData.dateArrays[0][j]).clone().add(2,'hours');
+                        var compDate = data.allUserData.dailyAvgDates[i];
+                        //test.add(200325,'milliseconds');
+                        if(Math.abs(test.diff(compDate)) < 77760000){
+                            oneAllCostO.push(data.oneUserData.arrayMeals[0][j]);
+                            toggle = true;
+                            console.log(toggle);
+                        }    
+                        //console.log(Math.abs(test.diff(compDate)));
+                    }
+                    if(toggle == false){
+                        oneAllCostO.push(0);
+                    }
+                    
+                }
+                console.log(oneAllCostO);
+               
+                //alert(oneAllCostO.length)
+                var chartBuild = [];
+
+                for(i=0;i<data.allUserData.dailyAvgDates.length;i++){
+                    chartBuild.push({
+                        "date" : data.allUserData.dailyAvgDates[i],
+                        "Breakfast" : oneAllCostD[i],
+                        "Lunch" : oneAllCostB[i],
+                        "Dinner" : oneAllCostL[i],
+                        "Snack" : oneAllCostO[i]
+                    });
+                }
+                //alert(oneAllCostO[1])
+                //alert(oneAllCostB[3]);
                 AmCharts.makeChart("chartdiv12", {
                     "type": "serial",
                     "categoryField": "date",
-                    "dataDateFormat": "YYYY-MM-DD",
+                    "dataDateFormat": "MM/DD/YY",
                     "categoryAxis": {
                         "parseDates": true
                     },
@@ -326,22 +436,22 @@ function RefreshPage(time,userName,data){
                         "bullet": "round",
                         "id": "AmGraph-1",
                         "title": "graph 1",
-                        "valueField": "column-1"
+                        "valueField": "Breakfast"
                     }, {
                         "bullet": "square",
                         "id": "AmGraph-2",
                         "title": "graph 2",
-                        "valueField": "column-2"
+                        "valueField": "Lunch"
                     }, {
                         "bullet": "triangleUp",
                         "id": "AmGraph-3",
                         "title": "graph 3",
-                        "valueField": "column-3"
+                        "valueField": "Dinner"
                     }, {
                         "bullet": "triangleDown",
                         "id": "AmGraph-4",
                         "title": "graph 4",
-                        "valueField": "column-4"
+                        "valueField": "Snack"
                     }],
                     "guides": [],
                     "valueAxes": [{
@@ -359,49 +469,7 @@ function RefreshPage(time,userName,data){
                         "size": 15,
                         "text": "Meal Costs Over "+requestedTimeFrame+" Days"
                     }],
-                    "dataProvider": [{
-                        "date": "2014-03-01",
-                        "column-1": 8,
-                        "column-2": 5,
-                        "column-3": 43,
-                        "column-4": 8
-                    }, {
-                        "date": "2014-03-02",
-                        "column-1": 6,
-                        "column-2": 7,
-                        "column-3": 80,
-                        "column-4": 100
-                    }, {
-                        "date": "2014-03-03",
-                        "column-1": 2,
-                        "column-2": 3,
-                        "column-3": 57,
-                        "column-4": 41
-                    }, {
-                        "date": "2014-03-04",
-                        "column-1": 1,
-                        "column-2": 3,
-                        "column-3": 27,
-                        "column-4": 55
-                    }, {
-                        "date": "2014-03-05",
-                        "column-1": 2,
-                        "column-2": 1,
-                        "column-3": 30,
-                        "column-4": 66
-                    }, {
-                        "date": "2014-03-06",
-                        "column-1": 3,
-                        "column-2": 2,
-                        "column-3": 52,
-                        "column-4": 98
-                    }, {
-                        "date": "2014-03-07",
-                        "column-1": 6,
-                        "column-2": 8,
-                        "column-3": 90,
-                        "column-4": 46
-                    }]
+                    "dataProvider": chartBuild
                 }); //end line graph
            
 }//end of refreshPage Function
