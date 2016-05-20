@@ -17,6 +17,13 @@ $(document).ready(function() {
         $("#chartdiv12").hide();
         $("#avgcost").hide();
         $("#costheader").hide();
+//http://api.jqueryui.com/datepicker/#utility-formatDate
+            $(function() {
+                $( "#date" ).datepicker();
+                $( "#format" ).change(function() {
+                    $( "#date" ).datepicker( "option", "dateFormat", "yy-mm-dd-@00:00:00" );
+                });
+            });
 
         $("#login").click(function() {
             userName = $('.userinput').val();
@@ -40,8 +47,6 @@ $(document).ready(function() {
                     $("#chartdiv9").show();
                     $("#chartdiv12").show();
 
-
-
                 } else {
                     Materialize.toast('User Name Not Recognized!', 4000)
                     Materialize.toast('Try Again or Register!', 4000)
@@ -51,7 +56,6 @@ $(document).ready(function() {
          userDataRetrieve(requestedTimeFrame,userName);
          
          }); //end click
-
         
         $("#register").click(function() {
             userName = $(".userinput").val();
@@ -161,18 +165,18 @@ function clearForm(){
     $("#cost").val('');
     $("#date").val('');
 };
- //This function retrieves and then calls the RefreshPage
+ //This function retrieves and then calls the refreshPage
  function userDataRetrieve(requestedTimeFrame,userName){   
             $.post(currentURL + "/userdata?time=" + requestedTimeFrame + "&userName=" + userName
             ).done(function(data) {
-                RefreshPage(requestedTimeFrame,userName,data);
+                refreshPage(requestedTimeFrame,userName,data);
                 
             }); //end of post   
         };
 
 
 //.toFixed(2);
-function RefreshPage(time,userName,data){
+function refreshPage(time,userName,data){
 
                 var AvgCost = data.oneUserData.avgCost[0]
                     if (AvgCost==null){
@@ -413,9 +417,9 @@ function RefreshPage(time,userName,data){
                 for(i=0;i<data.allUserData.dailyAvgDates.length;i++){
                     chartBuild.push({
                         "date" : data.allUserData.dailyAvgDates[i],
-                        "Breakfast" : oneAllCostD[i],
-                        "Lunch" : oneAllCostB[i],
-                        "Dinner" : oneAllCostL[i],
+                        "Dinner" : oneAllCostD[i],
+                        "Breakfast" : oneAllCostB[i],
+                        "Lunch" : oneAllCostL[i],
                         "Snack" : oneAllCostO[i]
                     });
                 }
@@ -439,22 +443,22 @@ function RefreshPage(time,userName,data){
                         "bullet": "round",
                         "id": "AmGraph-1",
                         "title": "Snack",
-                        "valueField": "Breakfast"
+                        "valueField": "Snack"
                     }, {
                         "bullet": "square",
                         "id": "AmGraph-2",
                         "title": "Breakfast",
-                        "valueField": "Lunch"
+                        "valueField": "Breakfast"
                     }, {
                         "bullet": "triangleUp",
                         "id": "AmGraph-3",
                         "title": "Lunch",
-                        "valueField": "Dinner"
+                        "valueField": "Lunch"
                     }, {
                         "bullet": "triangleDown",
                         "id": "AmGraph-4",
                         "title": "Dinner",
-                        "valueField": "Snack"
+                        "valueField": "Dinner"
                     }],
                     "guides": [],
                     "valueAxes": [{
