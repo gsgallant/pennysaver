@@ -135,6 +135,10 @@ $(document).ready(function() {
 
         $("#addinfo").click(function() {
             $('#modal1').closeModal();
+            //regex to strip off potential illegal character esp. $
+            var cleanCost = $("#cost").val().replace(/[\|&;\$%@"<>\(\)\+,]/g, "");
+            
+            // console.log(cleanCost);
             
             var newInfo = {
 
@@ -142,7 +146,7 @@ $(document).ready(function() {
                 "restaurant": $("#restaurant").val(),
                 "description": $("#description").val(),
                 "whatmeal": $('input[name="group1"]:checked').val(),
-                "cost": $("#cost").val(),
+                "cost": cleanCost,
                 "date": $("#date").val()
 
 
