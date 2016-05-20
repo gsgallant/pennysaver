@@ -2,9 +2,9 @@
 
 
 Group Project, Members:
-  Maike Fillmer
-  Greg Gallant
-  Aaron Karlsruher
+  Maike Fillmer,
+  Greg Gallant,
+  Aaron Karlsruher,
   James (Min) Kim
 
 
