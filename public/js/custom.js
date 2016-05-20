@@ -186,13 +186,37 @@ function clearForm(){
         };
 
 
-
+//.toFixed(2);
 function RefreshPage(time,userName,data){
 
-                $("#snackavgcost").html(data.oneUserData.avgCost[0]);
-                 $("#breakfastavgcost").html(data.oneUserData.avgCost[1]);
-                  $("#lunchavgcost").html(data.oneUserData.avgCost[2]);
-                   $("#dinneravgcost").html(data.oneUserData.avgCost[3]);
+                var AvgCost = data.oneUserData.avgCost[0]
+                    if (AvgCost==null){
+                     AvgCost =0 
+                    }
+                 $("#snackavgcost").html(AvgCost.toFixed(2));
+
+                 AvgCost = data.oneUserData.avgCost[1]
+                    if (AvgCost==null){
+                     AvgCost =0 
+                    }
+                 $("#breakfastavgcost").html(AvgCost.toFixed(2));
+
+                  AvgCost = data.oneUserData.avgCost[2]
+                    if (AvgCost==null){
+                     AvgCost =0 
+                    }
+                 $("#lunchavgcost").html(AvgCost.toFixed(2));
+
+                  AvgCost = data.oneUserData.avgCost[3]
+                    if (AvgCost==null){
+                     AvgCost =0 
+                    }
+                 $("#dinneravgcost").html(AvgCost.toFixed(2));
+                 // $("#breakfastavgcost").html(data.oneUserData.avgCost[1]);
+                  //$("#lunchavgcost").html(data.oneUserData.avgCost[2]);
+                   
+
+                   //$("#dinneravgcost").html(data.oneUserData.avgCost[3]);
 
                 
                 var userRestaurantChartArray = [];
