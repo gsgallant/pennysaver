@@ -47,7 +47,7 @@ $(document).ready(function() {
          }); //end click
 
         
-            //======================================================================
+        //======================================================================
         
 
 
@@ -98,8 +98,9 @@ $(document).ready(function() {
             Materialize.toast('Thanks!', 3000)
         });
         $("#logout").click(function() {
-            var userName="";
-            var data = "";
+            userName="";
+            data = "";
+            newInfo= "";
             $(".userinput").val('');
             $("#add").hide();
             $("#logout").hide();
@@ -108,8 +109,20 @@ $(document).ready(function() {
             $("#chartdiv6").hide();
             $("#chartdiv9").hide();
             $("#chartdiv12").hide();
+            $("#login").show();
+            $("#register").show();
+        });
+
+            $("#dropdown2").click(function() {
+           
+             var value = $(this).val();
+             console.log(value);
+
+
+        
 
         });
+
 
         //CLICK FUNCTION FOR NEW MEAL INFO
         $("#addinfo").click(function() {
