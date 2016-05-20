@@ -3,7 +3,9 @@
 var userName ="";
 var requestedTimeFrame = 30;
 var currentURL = window.location.origin;
-
+//=================================================================================
+//                          Click Listeners
+//=================================================================================
 $(document).ready(function() {
 
         $("#add").hide();
@@ -15,10 +17,6 @@ $(document).ready(function() {
         $("#chartdiv12").hide();
         $("#avgcost").hide();
         $("#costheader").hide();
-
-    
-
-        
 
         $("#login").click(function() {
             userName = $('.userinput').val();
@@ -55,11 +53,6 @@ $(document).ready(function() {
          }); //end click
 
         
-        //======================================================================
-        
-
-
-        //=========================================================================
         $("#register").click(function() {
             userName = $(".userinput").val();
 
@@ -131,17 +124,8 @@ $(document).ready(function() {
              requestedTimeFrame = $(this).children().data('value');
              console.log(requestedTimeFrame);
              userDataRetrieve(requestedTimeFrame,userName)
-             
-
-             // console.log(value);
-
-
-        
-
         });
 
-
-        //CLICK FUNCTION FOR NEW MEAL INFO
         $("#addinfo").click(function() {
             $('#modal1').closeModal();
             
@@ -213,12 +197,6 @@ function RefreshPage(time,userName,data){
                      AvgCost =0 
                     }
                  $("#dinneravgcost").html(AvgCost.toFixed(2));
-                 // $("#breakfastavgcost").html(data.oneUserData.avgCost[1]);
-                  //$("#lunchavgcost").html(data.oneUserData.avgCost[2]);
-                   
-
-                   //$("#dinneravgcost").html(data.oneUserData.avgCost[3]);
-
                 
                 var userRestaurantChartArray = [];
                 
@@ -460,22 +438,22 @@ function RefreshPage(time,userName,data){
                     "graphs": [{
                         "bullet": "round",
                         "id": "AmGraph-1",
-                        "title": "graph 1",
+                        "title": "Snack",
                         "valueField": "Breakfast"
                     }, {
                         "bullet": "square",
                         "id": "AmGraph-2",
-                        "title": "graph 2",
+                        "title": "Breakfast",
                         "valueField": "Lunch"
                     }, {
                         "bullet": "triangleUp",
                         "id": "AmGraph-3",
-                        "title": "graph 3",
+                        "title": "Lunch",
                         "valueField": "Dinner"
                     }, {
                         "bullet": "triangleDown",
                         "id": "AmGraph-4",
-                        "title": "graph 4",
+                        "title": "Dinner",
                         "valueField": "Snack"
                     }],
                     "guides": [],
