@@ -74,11 +74,12 @@ $(document).ready(function() {
                     $("#view").show();
                     $("#logout").show();
                     $(".dropdown-button").show();
+                    $("#avgcost").show();
                     
                     Materialize.toast('Thanks for Joining!', 3000)
                     
-                    console.log(userName);
-                    console.log(requestedTimeFrame);
+                    // console.log(userName);
+                    // console.log(requestedTimeFrame);
                     
                     $("#chartdiv3").show();
                     $("#chartdiv6").show();
