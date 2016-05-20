@@ -27,13 +27,16 @@ $(document).ready(function() {
 
         $("#login").click(function() {
             userName = $('.userinput').val();
+            password = $('#password').val();
+            console.log(password);
 
             $.post(currentURL + "/register", {
-                userName: userName
+                userName: userName,
+                password: password
             }).done(function(data) {
                 
                 if (data == true) {
-                    Materialize.toast('Welcome Back!', 3000)
+                    Materialize.toast('Welcome Back, ' + userName + "!", 3000)
                     $("#login").hide();
                     $("#register").hide();
                     $("#add").show();
@@ -53,7 +56,7 @@ $(document).ready(function() {
                     return false;
                 
                 } else {
-                    Materialize.toast('User Name Not Recognized!', 4000)
+                    Materialize.toast('User Name and Password Not Recognized!', 4000)
                     Materialize.toast('Try Again or Register!', 4000)
                 }
             })
@@ -65,9 +68,11 @@ $(document).ready(function() {
         
         $("#register").click(function() {
             userName = $(".userinput").val();
+            password = $("#password").val();
 
             $.post(currentURL + "/register", {
-                userName : userName
+                userName : userName,
+                password : password
             }).done(function(data) {
                 if (data == false) {
                     
@@ -79,7 +84,7 @@ $(document).ready(function() {
                     $(".dropdown-button").show();
                     $("#avgcost").show();
                     
-                    Materialize.toast('Thanks for Joining!', 3000)
+                    Materialize.toast('Thanks for Joining, ' + userName + "!", 3000)
                     
                     // console.log(userName);
                     // console.log(requestedTimeFrame);
@@ -109,9 +114,11 @@ $(document).ready(function() {
         });
         $("#logout").click(function() {
             userName="";
+            password="";
             data = "";
             newInfo= "";
             $(".userinput").val('');
+            $("#password").val('');
             $("#add").hide();
             $("#logout").hide();
             $(".dropdown-button").hide();
@@ -143,6 +150,7 @@ $(document).ready(function() {
             var newInfo = {
 
                 "username": $(".userinput").val(),
+                "password" : $("#password").val(),
                 "restaurant": $("#restaurant").val(),
                 "description": $("#description").val(),
                 "whatmeal": $('input[name="group1"]:checked').val(),
@@ -500,7 +508,7 @@ $(function(){
 
 $(document).keypress(function(e) {
     if(e.which == 13) {
-        if($(".userinput").is(":focus")){
+        if($(".userinput").is(":focus") || $("#password").is(":focus")){
             if($(".userinput").val().length > 0){
                 $("#login").trigger('click');
             } else {

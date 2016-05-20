@@ -23,6 +23,10 @@ var foodTableModel = seqModel.define("foodtable", {
 		type: Sequelize.STRING,
 	},
 	
+	password: {
+		type: Sequelize.STRING,
+	},
+	
 	restaurant: {
 		type: Sequelize.STRING,
 	},

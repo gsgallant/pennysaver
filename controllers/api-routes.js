@@ -52,7 +52,7 @@ module.exports = function(app){
 		app.post('/userdata',function (req, res) {
 
 			sequelTableModel.findAll({
-		  		attributes : ['id', 'username','restaurant','description','whatmeal','cost','date'] //
+		  		attributes : ['id', 'password', 'username','restaurant','description','whatmeal','cost','date'] //
 		  	})
 		  	.then(function(foodtable){
 				
@@ -461,13 +461,20 @@ app.post('/register',function (req, res) {
 		// console.log(req);
 		// console.log('req.body.userName',req.body.userName);
 		var newUser = req.body.userName;
+		var password = req.body.password;
 		// console.log('username='+newUser);
 		var userexists = false;
 		for (i=0;i<foodtable.length;i++){
-			if(foodtable[i].dataValues.username==newUser){
+			if(foodtable[i].dataValues.username==newUser&& foodtable[i].dataValues.password==password){
 				userexists = true;
+				break;
 			}
+			console.log(foodtable[i].dataValues.username)
+			console.log(foodtable[i].dataValues.password)
 		}
+		console.log(newUser);
+		console.log(password);
+
 		res.send(userexists);//returns true or false.  false means the user doesn't exist.
 	})
 	
@@ -478,6 +485,7 @@ app.post('/register',function (req, res) {
 		app.post('/add',function (req, res) {
 				sequelTableModel.create({
 					username : req.body.username,
+					password : req.body.password,
 					restaurant : req.body.restaurant,
 					description : req.body.description,
 					whatmeal : req.body.whatmeal,
