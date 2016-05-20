@@ -4,12 +4,12 @@
 }
 
 #body {
-    background-color: white;
+    background-color: #e6f3ff;
 }
-
+/*#cccccc*/
 body,
 html {
-    background-color: white !important;
+    background-color: #cccccc !important;
 }
 
 .intro {
@@ -197,10 +197,13 @@ label {
     font-size: 15px;
     text-align: center;
 }
-
+#modal1{
+    background-color: #d9e6f2;
+}
 .modal { 
     width: 95% !important ; 
     max-height: 100% !important
+
 }
 #modal-header {
     text-align: center;

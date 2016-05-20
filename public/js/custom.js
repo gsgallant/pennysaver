@@ -490,3 +490,22 @@ function refreshPage(time,userName,data){
                 }); //end line graph
        return false;    
 }//end of refreshPage Function
+//Allows <ENTER> key for userName input
+$(function(){
+    $('form').on('submit', function(e){
+        e.preventDefault();
+    });
+});
+
+
+$(document).keypress(function(e) {
+    if(e.which == 13) {
+        if($(".userinput").is(":focus")){
+            if($(".userinput").val().length > 0){
+                $("#login").trigger('click');
+            } else {
+                alert("Field must not be blank.");
+            }
+        }
+    }
+});
