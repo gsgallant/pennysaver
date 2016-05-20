@@ -17,7 +17,7 @@ $(document).ready(function() {
         $("#chartdiv12").hide();
         $("#avgcost").hide();
         $("#costheader").hide();
-//http://api.jqueryui.com/datepicker/#utility-formatDate
+//http://api.jqueryui.com/datepicker/#utility-formatDate//here for documentation
             $(function() {
                 $( "#date" ).datepicker();
                 $( "#format" ).change(function() {
@@ -31,6 +31,7 @@ $(document).ready(function() {
             $.post(currentURL + "/register", {
                 userName: userName
             }).done(function(data) {
+                
                 if (data == true) {
                     Materialize.toast('Welcome Back!', 3000)
                     $("#login").hide();
@@ -46,16 +47,21 @@ $(document).ready(function() {
                     $("#chartdiv6").show();
                     $("#chartdiv9").show();
                     $("#chartdiv12").show();
-
+                    
+                    userDataRetrieve(requestedTimeFrame,userName);
+                    
+                    return false;
+                
                 } else {
                     Materialize.toast('User Name Not Recognized!', 4000)
                     Materialize.toast('Try Again or Register!', 4000)
                 }
             })
          
-         userDataRetrieve(requestedTimeFrame,userName);
+         return false;
          
-         }); //end click
+         }); //end login click listener
+
         
         $("#register").click(function() {
             userName = $(".userinput").val();
@@ -92,9 +98,6 @@ $(document).ready(function() {
                     Materialize.toast('That User Name is NOT AVAILABLE!', 3000)
                 }
             });
-
-
-
         });
 
         $("#add").click(function() {
@@ -165,18 +168,21 @@ function clearForm(){
     $("#cost").val('');
     $("#date").val('');
 };
- //This function retrieves and then calls the refreshPage
+ 
+//Functions in this area
+ //This function retrieves the data with a POST and then calls the refreshPage
  function userDataRetrieve(requestedTimeFrame,userName){   
             $.post(currentURL + "/userdata?time=" + requestedTimeFrame + "&userName=" + userName
             ).done(function(data) {
                 refreshPage(requestedTimeFrame,userName,data);
                 
             }); //end of post   
+        
         };
 
 
-//.toFixed(2);
 function refreshPage(time,userName,data){
+                $("#costheader").html("Average cost per meal over "+requestedTimeFrame+" days");
 
                 var AvgCost = data.oneUserData.avgCost[0]
                     if (AvgCost==null){
