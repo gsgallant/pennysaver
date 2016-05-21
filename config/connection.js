@@ -12,7 +12,7 @@ var source = {
         port: 3306,
         host: 'localhost',
         user: 'root',
-        password: "mf4711MF",
+        password: "",
         database: "food_db"
     },
 //after we deploy to heroku and add the jawsDB then we can add the missing data here:
@@ -26,7 +26,7 @@ var source = {
 }
 
 // Selects a connection (can be changed quickly as needed)
-var selectedSource = source.localhost;
+var selectedSource = source.jawsDB;
 
 // Creates mySQL connection using Sequelize
 var sequelize = new Sequelize(selectedSource.database, selectedSource.user, selectedSource.password, {
