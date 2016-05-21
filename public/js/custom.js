@@ -65,7 +65,7 @@ $(document).ready(function() {
                     return false;
                 
                 } else {
-                    Materialize.toast('User Name and Password Not Recognized!', 4000)
+                    Materialize.toast('Your Email and Password Not Recognized!', 4000)
                     Materialize.toast('Try Again or Register!', 4000)
                 }
             })
@@ -281,7 +281,7 @@ function refreshPage(time,userName,data){
                         "balloonText": "[[title]] of [[category]]:[[value]]",
                         "fillAlphas": 1,
                         "id": "AmGraph-1",
-                        "title": "User",
+                        "title": "You",
                         "type": "column",
                         "valueField": "column-1"
                     }, {
