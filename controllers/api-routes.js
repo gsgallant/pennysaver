@@ -331,7 +331,7 @@ module.exports = function(app){
 				dailyAvgO = [];
 
 				//console.log(dateArrayB);
-				for(i=0; i<timeSpan;i++){
+				for(i=1; i<=timeSpan;i++){
 
 					testDate = beginTime.clone().add(i,'days');
 					
@@ -364,7 +364,7 @@ module.exports = function(app){
 				//console.log(dailyAvgB);
 				//console.log(datesInTimeSpanB);
 
-				for(i=0; i<timeSpan;i++){
+				for(i=1; i<=timeSpan;i++){
 
 					testDate = beginTime.clone().add(i,'days');
 					var count = 0;
@@ -383,7 +383,7 @@ module.exports = function(app){
 				//console.log(dailyAvgL);
 				//console.log(datesInTimeSpanL);
 
-				for(i=0; i<timeSpan;i++){
+				for(i=1; i<=timeSpan;i++){
 
 					testDate = beginTime.clone().add(i,'days');
 					var count = 0;
@@ -401,7 +401,7 @@ module.exports = function(app){
 				//console.log(dailyAvgD);
 				//console.log(datesInTimeSpanD);
 
-				for(i=0; i<timeSpan;i++){
+				for(i=1; i<=timeSpan;i++){
 
 					testDate = beginTime.clone().add(i,'days');
 					var count = 0;

@@ -448,39 +448,52 @@ function refreshPage(time,userName,data){
                     "categoryField": "date",
                     "dataDateFormat": "MM/DD/YY",
                     "categoryAxis": {
-                        "parseDates": true
+                        "parseDates": true,
+                        "gridAlpha" : 0,                        
                     },
                     "chartCursor": {
-                        "enabled": true
+                        "enabled": true,
+                        "categoryBalloonDateFormat" : "MMM DD"
+                        //"categoryBalloonEnabled" : false,
+                        //"categoryBalloonAlpha" : 0
                     },
                     "chartScrollbar": {
                         "enabled": true
-                    },
+                    },         
                     "trendLines": [],
                     "graphs": [{
-                        "bullet": "round",
+                        "balloonText": "[[title]]:[[value]]",
+                        "fillAlphas": 0.7,
                         "id": "AmGraph-1",
-                        "title": "Snack",
-                        "valueField": "Snack"
-                    }, {
-                        "bullet": "square",
-                        "id": "AmGraph-2",
+                        "lineAlpha": 0,
                         "title": "Breakfast",
                         "valueField": "Breakfast"
                     }, {
-                        "bullet": "triangleUp",
-                        "id": "AmGraph-3",
+                        "balloonText": "[[title]]:[[value]]",
+                        "fillAlphas": 0.7,
+                        "id": "AmGraph-2",
+                        "lineAlpha": 0,
                         "title": "Lunch",
                         "valueField": "Lunch"
                     }, {
-                        "bullet": "triangleDown",
-                        "id": "AmGraph-4",
+                        "balloonText": "[[title]]:[[value]]",
+                        "fillAlphas": 0.7,
+                        "id": "AmGraph-3",
+                        "lineAlpha": 0,
                         "title": "Dinner",
                         "valueField": "Dinner"
+                    }, {
+                        "balloonText": "[[title]]:[[value]]",
+                        "fillAlphas": 0.7,
+                        "id": "AmGraph-4",
+                        "lineAlpha": 0,
+                        "title": "Snack",
+                        "valueField": "Snack"
                     }],
                     "guides": [],
                     "valueAxes": [{
                         "id": "ValueAxis-1",
+                        "stackType": "regular",
                         "title": "Dollars"
                     }],
                     "allLabels": [],
@@ -492,10 +505,105 @@ function refreshPage(time,userName,data){
                     "titles": [{
                         "id": "Title-1",
                         "size": 15,
-                        "text": "Meal Costs Over "+requestedTimeFrame+" Days"
+                        "text": "Your Meal Costs Over "+requestedTimeFrame+" Days"
                     }],
                     "dataProvider": chartBuild
                 }); //end line graph
+
+                var chartBuild = [];
+
+                for(i=0;i<data.allUserData.dailyAvgDates.length;i++){
+
+                    var B = data.allUserData.dailyAvgCost[1][i];
+                    var L = data.allUserData.dailyAvgCost[2][i];
+                    var D = data.allUserData.dailyAvgCost[3][i];
+                    var O = data.allUserData.dailyAvgCost[0][i];
+
+                    if(B == null){B = 0};
+                    if(L == null){L = 0};
+                    if(D == null){D = 0};
+                    if(O == null){O = 0};
+
+
+                    chartBuild.push({
+                        "date" : data.allUserData.dailyAvgDates[i],
+                        "Breakfast" : B,
+                        "Lunch" : L,
+                        "Dinner" : D,
+                        "Snack" : O
+                    });
+                }
+                //alert(oneAllCostO[1])
+                //alert(oneAllCostB[3]);
+                console.log(chartBuild[11].Breakfast);
+                AmCharts.makeChart("chartdiv15", {
+                    "type": "serial",
+                    "categoryField": "date",
+                    "dataDateFormat": "MM/DD/YY",
+                    "categoryAxis": {
+                        "parseDates": true,
+                        "gridAlpha" : 0,                        
+                    },
+                    "chartCursor": {
+                        "enabled": true,
+                        "categoryBalloonDateFormat" : "MMM DD"
+                        //"categoryBalloonEnabled" : false,
+                        //"categoryBalloonAlpha" : 0
+                    },
+                    "chartScrollbar": {
+                        "enabled": true
+                    },         
+                    "trendLines": [],
+                    "graphs": [{
+                        "balloonText": "[[title]]:[[value]]",
+                        "fillAlphas": 0.7,
+                        "id": "AmGraph-1",
+                        "lineAlpha": 0,
+                        "title": "Breakfast",
+                        "valueField": "Breakfast"
+                    }, {
+                        "balloonText": "[[title]]:[[value]]",
+                        "fillAlphas": 0.7,
+                        "id": "AmGraph-2",
+                        "lineAlpha": 0,
+                        "title": "Lunch",
+                        "valueField": "Lunch"
+                    }, {
+                        "balloonText": "[[title]]:[[value]]",
+                        "fillAlphas": 0.7,
+                        "id": "AmGraph-3",
+                        "lineAlpha": 0,
+                        "title": "Dinner",
+                        "valueField": "Dinner"
+                    }, {
+                        "balloonText": "[[title]]:[[value]]",
+                        "fillAlphas": 0.7,
+                        "id": "AmGraph-4",
+                        "lineAlpha": 0,
+                        "title": "Snack",
+                        "valueField": "Snack"
+                    }],
+                    "guides": [],
+                    "valueAxes": [{
+                        "id": "ValueAxis-1",
+                        "stackType": "regular",
+                        "title": "Dollars"
+                    }],
+                    "allLabels": [],
+                    "balloon": {},
+                    "legend": {
+                        "enabled": true,
+                        "useGraphSettings": true
+                    },
+                    "titles": [{
+                        "id": "Title-1",
+                        "size": 15,
+                        "text": "All User Meal Costs Over "+requestedTimeFrame+" Days"
+                    }],
+                    "dataProvider": chartBuild
+                }); //end line graph
+
+
        return false;    
 }//end of refreshPage Function
 //Allows <ENTER> key for userName input
