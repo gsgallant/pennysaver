@@ -3,6 +3,12 @@
 var userName ="";
 var requestedTimeFrame = 30;
 var currentURL = window.location.origin;
+
+function validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+}
+
 //=================================================================================
 //                          Click Listeners
 //=================================================================================
@@ -15,6 +21,7 @@ $(document).ready(function() {
         $("#chartdiv6").hide();
         $("#chartdiv9").hide();
         $("#chartdiv12").hide();
+        $("#chartdiv15").hide();
         $("#avgcost").hide();
         $("#costheader").hide();
 //http://api.jqueryui.com/datepicker/#utility-formatDate//here for documentation
@@ -29,7 +36,6 @@ $(document).ready(function() {
             userName = $('.userinput').val();
             password = $('#password').val();
             console.log(password);
-
             $.post(currentURL + "/register", {
                 userName: userName,
                 password: password
@@ -50,6 +56,7 @@ $(document).ready(function() {
                     $("#chartdiv6").show();
                     $("#chartdiv9").show();
                     $("#chartdiv12").show();
+                    $("#chartdiv15").show();
                     
                     userDataRetrieve(requestedTimeFrame,userName);
                     
@@ -69,6 +76,12 @@ $(document).ready(function() {
         $("#register").click(function() {
             userName = $(".userinput").val();
             password = $("#password").val();
+
+            console.log(validateEmail(userName));
+
+            if(validateEmail(userName) == false || password == ""){
+                Materialize.toast('Not a valid Email and/or Password!', 3000)
+            }else{
 
             $.post(currentURL + "/register", {
                 userName : userName,
@@ -93,6 +106,7 @@ $(document).ready(function() {
                     $("#chartdiv6").show();
                     $("#chartdiv9").show();
                     $("#chartdiv12").show();
+                    $("#chartdiv15").show();
                     
                     userDataRetrieve(requestedTimeFrame,userName);
                     
@@ -103,6 +117,7 @@ $(document).ready(function() {
                     Materialize.toast('That User Name is NOT AVAILABLE!', 3000)
                 }
             });
+        }
         });
 
         $("#add").click(function() {
@@ -126,6 +141,7 @@ $(document).ready(function() {
             $("#chartdiv6").hide();
             $("#chartdiv9").hide();
             $("#chartdiv12").hide();
+            $("#chartdiv15").hide();
             $("#avgcost").hide();
             $("#costheader").hide();
             $("#login").show();
