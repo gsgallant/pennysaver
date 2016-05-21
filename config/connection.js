@@ -26,7 +26,7 @@ var source = {
 }
 
 // Selects a connection (can be changed quickly as needed)
-var selectedSource = source.localhost;
+var selectedSource = source.jawsDB;
 
 // Creates mySQL connection using Sequelize
 var sequelize = new Sequelize(selectedSource.database, selectedSource.user, selectedSource.password, {
