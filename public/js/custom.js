@@ -535,7 +535,7 @@ function refreshPage(time,userName,data){
                 }
                 //alert(oneAllCostO[1])
                 //alert(oneAllCostB[3]);
-                console.log(chartBuild[11].Breakfast);
+                //console.log(chartBuild[11].Breakfast);
                 AmCharts.makeChart("chartdiv15", {
                     "type": "serial",
                     "categoryField": "date",
