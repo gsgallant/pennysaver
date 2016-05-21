@@ -24,6 +24,7 @@ $(document).ready(function() {
         $("#chartdiv15").hide();
         $("#avgcost").hide();
         $("#costheader").hide();
+        $("#description").show();
 //http://api.jqueryui.com/datepicker/#utility-formatDate//here for documentation
             $(function() {
                 $( "#date" ).datepicker();
@@ -50,6 +51,7 @@ $(document).ready(function() {
                     $(".dropdown-button").show();
                     $("#avgcost").show();
                     $("#costheader").show();
+                    $("#description").hide();
 
 
                     $("#chartdiv3").show();
@@ -96,6 +98,7 @@ $(document).ready(function() {
                     $("#logout").show();
                     $(".dropdown-button").show();
                     $("#avgcost").show();
+                    $("#description").hide();
                     
                     Materialize.toast('Thanks for Joining, ' + userName + "!", 3000)
                     
@@ -146,6 +149,7 @@ $(document).ready(function() {
             $("#costheader").hide();
             $("#login").show();
             $("#register").show();
+            $("#description").show();
         });
 
             $(document).on('click', '#dropdown2 li', function() {
