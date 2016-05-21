@@ -24,7 +24,7 @@ $(document).ready(function() {
         $("#chartdiv15").hide();
         $("#avgcost").hide();
         $("#costheader").hide();
-        $("#description").show();
+        $("#descriptionArea").show();
 //http://api.jqueryui.com/datepicker/#utility-formatDate//here for documentation
             $(function() {
                 $( "#date" ).datepicker();
@@ -36,7 +36,7 @@ $(document).ready(function() {
         $("#login").click(function() {
             userName = $('.userinput').val();
             password = $('#password').val();
-            console.log(password);
+            // console.log(password);
             $.post(currentURL + "/register", {
                 userName: userName,
                 password: password
@@ -51,7 +51,7 @@ $(document).ready(function() {
                     $(".dropdown-button").show();
                     $("#avgcost").show();
                     $("#costheader").show();
-                    $("#description").hide();
+                    $("#descriptionArea").hide();
 
 
                     $("#chartdiv3").show();
@@ -79,7 +79,7 @@ $(document).ready(function() {
             userName = $(".userinput").val();
             password = $("#password").val();
 
-            console.log(validateEmail(userName));
+            // console.log(validateEmail(userName));
 
             if(validateEmail(userName) == false || password == ""){
                 Materialize.toast('Not a valid Email and/or Password!', 3000)
@@ -98,7 +98,7 @@ $(document).ready(function() {
                     $("#logout").show();
                     $(".dropdown-button").show();
                     $("#avgcost").show();
-                    $("#description").hide();
+                    $("#descriptionArea").hide();
                     
                     Materialize.toast('Thanks for Joining, ' + userName + "!", 3000)
                     
@@ -149,14 +149,14 @@ $(document).ready(function() {
             $("#costheader").hide();
             $("#login").show();
             $("#register").show();
-            $("#description").show();
+            $("#descriptionArea").show();
         });
 
             $(document).on('click', '#dropdown2 li', function() {
            
              // var value = $(this).val();
              requestedTimeFrame = $(this).children().data('value');
-             console.log(requestedTimeFrame);
+             // console.log(requestedTimeFrame);
              userDataRetrieve(requestedTimeFrame,userName)
         });
 
@@ -367,7 +367,7 @@ function refreshPage(time,userName,data){
                         if(Math.abs(test.diff(compDate)) < 77760000){
                             oneAllCostB.push(data.oneUserData.arrayMeals[1][j]);
                             toggle = true;
-                            console.log(toggle);
+                            // console.log(toggle);
                         }    
                         //console.log(Math.abs(test.diff(compDate)));
                     }
@@ -376,7 +376,7 @@ function refreshPage(time,userName,data){
                     }
                     
                 }
-                console.log(oneAllCostB);
+                // console.log(oneAllCostB);
                //alert(moment(data.allUserData.dailyAvgDates[4]) + " " + moment(data.oneUserData.dateArrays[1][0]) + " " + moment(data.allUserData.dailyAvgDates[4]).isSame(moment(data.oneUserData.dateArrays[1][0])))
               // console.log(moment(data.allUserData.dailyAvgDates[4]).format("MM/DD/YY") + " " + moment(data.oneUserData.dateArrays[1][0]).format("MM/DD/YY") + " " + moment(data.allUserData.dailyAvgDates[4]).isSame(moment(data.oneUserData.dateArrays[1][0])))
                 var oneAllCostL = [];
@@ -391,7 +391,7 @@ function refreshPage(time,userName,data){
                         if(Math.abs(test.diff(compDate)) < 77760000){
                             oneAllCostL.push(data.oneUserData.arrayMeals[2][j]);
                             toggle = true;
-                            console.log(toggle);
+                            // console.log(toggle);
                         }    
                         //console.log(Math.abs(test.diff(compDate)));
                     }
@@ -400,7 +400,7 @@ function refreshPage(time,userName,data){
                     }
                     
                 }
-                console.log(oneAllCostL);
+                // console.log(oneAllCostL);
 
                 var oneAllCostD = [];
                 //alert(data.oneUserData.dateArrays[1].length)
@@ -414,7 +414,7 @@ function refreshPage(time,userName,data){
                         if(Math.abs(test.diff(compDate)) < 77760000){
                             oneAllCostD.push(data.oneUserData.arrayMeals[3][j]);
                             toggle = true;
-                            console.log(toggle);
+                            // console.log(toggle);
                         }    
                         //console.log(Math.abs(test.diff(compDate)));
                     }
@@ -423,7 +423,7 @@ function refreshPage(time,userName,data){
                     }
                     
                 }
-                console.log(oneAllCostD);
+                // console.log(oneAllCostD);
 
 
                 var oneAllCostO = [];
@@ -438,7 +438,7 @@ function refreshPage(time,userName,data){
                         if(Math.abs(test.diff(compDate)) < 77760000){
                             oneAllCostO.push(data.oneUserData.arrayMeals[0][j]);
                             toggle = true;
-                            console.log(toggle);
+                            // console.log(toggle);
                         }    
                         //console.log(Math.abs(test.diff(compDate)));
                     }
@@ -447,7 +447,7 @@ function refreshPage(time,userName,data){
                     }
                     
                 }
-                console.log(oneAllCostO);
+                // console.log(oneAllCostO);
                
                 //alert(oneAllCostO.length)
                 var chartBuild = [];
@@ -645,3 +645,4 @@ $(document).keypress(function(e) {
         }
     }
 });
+//export { validateEmail(testThis) }; 

@@ -33,22 +33,6 @@ function bubbleSort(one, two){
 
 module.exports = function(app){
 
-//middleware for getting all the data from mysql and using the sequel model.
-
-// app.get('/',function (req, res, next) {
-//   	sequelTableModel.findAll({
-//   		attributes : ['id', 'username','restaurant','description','whatmeal','cost','date'] //
-//   	})
-//   	.then(function(foodtable){
-		
-// 		for (i=0;i<foodtable.length;i++){
-// 			console.log(foodtable[i].dataValues.username+" "+foodtable[i].dataValues.cost);
-// 		}
-// 		res.json(foodtable);
-// 	})
-	
-// });
-
 		app.post('/userdata',function (req, res) {
 
 			sequelTableModel.findAll({
@@ -94,7 +78,6 @@ module.exports = function(app){
 					restCount[i] = 0;
 				}
 				//console.log(restCount);
-				//restCount = [0,0,0,0,0,0];
 				C = 0;
 				// console.log("foodtable=",foodtable);
 				// console.log("length=",foodtable.length);
@@ -469,11 +452,11 @@ app.post('/register',function (req, res) {
 				userexists = true;
 				break;
 			}
-			console.log(foodtable[i].dataValues.username)
-			console.log(foodtable[i].dataValues.password)
+			// console.log(foodtable[i].dataValues.username)
+			// console.log(foodtable[i].dataValues.password)
 		}
-		console.log(newUser);
-		console.log(password);
+		// console.log(newUser);
+		// console.log(password);
 
 		res.send(userexists);//returns true or false.  false means the user doesn't exist.
 	})
@@ -493,7 +476,7 @@ app.post('/register',function (req, res) {
 					date : req.body.date
 					})
 				.then(function(){
-				console.log("after /add");
+				// console.log("after /add");
 				res.end();
 				// res.redirect(307,'/userdata?time='+30+"&userName="+req.body.username)
 			  })
