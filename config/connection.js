@@ -1,7 +1,7 @@
 // *********************************************************************************
 // CONNECTION.JS - THIS FILE INITIATES THE CONNECTION TO MYSQL
 // *********************************************************************************
-//greg pw = Thew1zardof0z
+//
 // Dependencies
 var Sequelize = require("sequelize");
 
