@@ -25,7 +25,7 @@ Sequelize, MYSQL, Javascript, Node, JQuery, JQuery UI, Express, AMCharts
 
 #Comments:
 
-We did this a group project and it was both enjoyable and a great learning experience.  I think the group worked together very well.
+We did this as a group project and it was both enjoyable and a great learning experience.  I think the group worked together very well.
 
 Group Project, Members:
   Maike Fillmer,
