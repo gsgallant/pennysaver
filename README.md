@@ -1,4 +1,4 @@
-# Week16Project
+# A Penny $aved
 #App can be seen at
 - http://pennysaved.herokuapp.com/
 
